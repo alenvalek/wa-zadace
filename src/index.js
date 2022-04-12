@@ -1,3 +1,5 @@
+// WA 101
+
 const PORT = 5000;
 
 const app = require("express")();
@@ -21,6 +23,13 @@ app.get("/prognoza", (req, res) => {
 		`Danas će biti ${vrijeme[Math.floor(Math.random() * vrijeme.length)]}`
 	);
 });
+
+// WA 102
+
+import { dohvatiBroj, dodajBroj } from "./route-actions/";
+
+app.get("/dodaj/:broj", dodajBroj);
+app.get("/dohvati", dohvatiBroj);
 
 app.listen(PORT, () => {
 	console.log(`Listening for requests at http://localhost:${PORT}`);
