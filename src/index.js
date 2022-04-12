@@ -3,6 +3,7 @@
 const PORT = 5000;
 
 const app = require("express")();
+app.use(require("cors")());
 
 app.get("/", (req, res) => {
 	res.send(
