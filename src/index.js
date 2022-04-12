@@ -3,7 +3,23 @@ const PORT = 5000;
 const app = require("express")();
 
 app.get("/", (req, res) => {
-	res.send("<h1>Hello world</h1>");
+	res.send(
+		"<h1>Hub</h1> <br> <h3>1. Za trenutni datum posjetite <a href='/datum'>/datum</a></h3> <br> <h3>2. Za vremensku prognozu posjetite <a href='/prognoza'>/prognoza</a></h3>"
+	);
+});
+
+app.get("/datum", (req, res) => {
+	const curDate = new Date();
+	return res.send(
+		`${curDate.getDay()}.${curDate.getMonth()}.${curDate.getFullYear()}. ${curDate.getHours()}:${curDate.getMinutes()}`
+	);
+});
+
+app.get("/prognoza", (req, res) => {
+	const vrijeme = ["sunčano", "kišovito", "oblačno"];
+	return res.send(
+		`Danas će biti ${vrijeme[Math.floor(Math.random() * vrijeme.length)]}`
+	);
 });
 
 app.listen(PORT, () => {
