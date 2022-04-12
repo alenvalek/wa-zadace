@@ -39,7 +39,7 @@
         async fetchNumberData() {
             const res = await fetch("http://localhost:5000/dohvati")
             const results = await res.text();
-
+            console.log(results)
             this.numbers = results
             
         },
@@ -57,7 +57,7 @@
 
         async addNumber() {
             await fetch(`http://localhost:5000/dodaj/${this.newNumber}`)
-            await this.fetchData();
+            await this.fetchNumberData();
             this.newNumber = 0
         }
       }

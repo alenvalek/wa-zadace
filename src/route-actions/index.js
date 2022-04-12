@@ -1,4 +1,4 @@
-const lista = require("../dbConfig");
+const { lista } = require("../dbConfig");
 
 module.exports = {
 	dodajBroj: (req, res) => {
@@ -11,9 +11,7 @@ module.exports = {
 	},
 	dohvatiBroj: (_, res) => {
 		let response = "";
-		if (lista.length == 0) {
-			return res.send("Prazna lista");
-		}
+
 		for (let i = 0; i < lista.length; i++) {
 			response += ` ${lista[i]}`;
 		}

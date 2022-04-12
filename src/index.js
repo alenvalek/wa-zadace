@@ -27,10 +27,25 @@ app.get("/prognoza", (req, res) => {
 
 // WA 102
 
-import { dohvatiBroj, dodajBroj } from "./route-actions/";
+const { dohvatiBroj, dodajBroj } = require("./route-actions/");
 
 app.get("/dodaj/:broj", dodajBroj);
 app.get("/dohvati", dohvatiBroj);
+
+// WA 104
+const { studenti } = require("./dbConfig");
+
+app.get("/studenti", (req, res) => {
+	res.send(studenti);
+});
+
+app.get("/studenti/first", (req, res) => {
+	res.send(studenti[0]);
+});
+
+app.get("/studenti/last", (req, res) => {
+	res.send(studenti[studenti.length - 1]);
+});
 
 app.listen(PORT, () => {
 	console.log(`Listening for requests at http://localhost:${PORT}`);
