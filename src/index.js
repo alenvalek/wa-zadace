@@ -1,4 +1,5 @@
 // WA 101
+const moment = require("moment");
 
 const PORT = 5000;
 
@@ -12,10 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/datum", (req, res) => {
-	const curDate = new Date();
-	return res.send(
-		`${curDate.getDay()}.${curDate.getMonth()}.${curDate.getFullYear()}. ${curDate.getHours()}:${curDate.getMinutes()}`
-	);
+	return res.send(`${moment().format("DD.mm.yyyy HH:MM ")}`);
 });
 
 app.get("/prognoza", (req, res) => {
